@@ -29,9 +29,9 @@ If you specify the `newimagefile.img` parameter, the script will make a copy of 
 * `-r` Will attempt to repair the filesystem using aditional options if the normal repair fails. 
 * `-z` Will compress the image after shrinking using gzip. `.gz` extension will be added to the filename. 
 * `-Z` Will compress the image after shrinking using xz. `.xz` extension will be added to the filename. 
-* `-c  Will use option -1 for pigz and option -0 for xz. 
-* `-C  Will use option -9. 
-* `-e  Will use option -e for xz. 
+* `-c` Will use option -1 for pigz and option -0 for xz. 
+* `-C` Will use option -9. 
+* `-e` Will use option -e for xz. 
 * `-a` will use option -f for pigz and option -T0 for xz and compress in parallel. 
 * `-d` will create a logfile `pishrink.log` which may help for problem analysis. 
 
