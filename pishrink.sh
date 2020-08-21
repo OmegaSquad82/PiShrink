@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="v0.1.2"
+version="v0.1.2.2"
 
 CURRENT_DIR="$(pwd)"
 SCRIPTNAME="${0##*/}"
@@ -279,6 +279,7 @@ trap cleanup EXIT
 # Gather info
 info "Gathering data"
 beforesize="$(ls -lh "$img" | cut -d ' ' -f 5)"
+beforebytes="$(ls -l "$img" | cut -d ' ' -f 5)"
 parted_output="$(parted -ms "$img" unit B print)"
 rc=$?
 if (( $rc )); then
@@ -433,6 +434,7 @@ if [[ -n $ziptool ]]; then
 fi
 
 aftersize=$(ls -lh "$img" | cut -d ' ' -f 5)
+afterbytes=$(ls -l "$img" | cut -d ' ' -f 5)
 logVariables $LINENO aftersize
 
-info "Shrunk $img from $beforesize to $aftersize"
+info "Shrunk $img from $beforesize to $aftersize ratio $(printf %.2f%% "$((10**3 * 100 * $afterbytes/$beforebytes))e-3")"
